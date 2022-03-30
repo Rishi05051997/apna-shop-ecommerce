@@ -1,0 +1,93 @@
+/*
+    Author: Vrushabh Dhatrak
+    Release: 0.1
+    Description : Product Details Page
+*/
+.product-details-container {
+    margin:0;
+    padding:0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:1fr;
+    
+    grid-template-areas: 
+    "header"
+    "product-details-card"
+    "product-details-card"
+    "product-details-card"
+    "product-details-card"
+    "product-details-card"
+    "footer"
+    ;
+}
+
+.header-container {
+    grid-column: header;
+}
+.product-details-card {
+    margin: 17rem 8rem 0;
+    padding: var(--pad-sm);
+    background: #ffff;
+    grid-column:product-details-card;
+    display: grid;
+    grid-template-columns:30% 70%;
+    grid-template-areas: 
+    "product-img-section product-details-section"
+    "product-img-section product-details-section"
+    "product-img-section product-details-section"
+    "product-img-section product-details-section"
+    ;
+
+}
+.product-img-section {
+    /* setting margin */
+    grid-column:product-img-section;    
+}
+
+.product-btn-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-details-section {
+    grid-column:product-details-section;}
+
+.product-price-section {
+    width: 35%;
+    align-items: baseline;
+}
+.product-rating-section {
+    width:35%;
+}
+.coupons {
+    width:50%;
+}
+.location {
+    width:50%;
+}
+
+.footer {
+    grid-column:footer;
+}
+
+/* **** UTILS *** */
+.btn-product {
+    max-width: inherit;
+    width: 50%;
+}
+
+.success-text {
+    color: var(--success-color)
+}
+
+.warning-text {
+    color: var(--warning-color)
+}
+.line-through {
+    text-decoration: line-through;
+}
+.flex-prop {
+    display: flex;
+    justify-content: space-between;
+}
+
