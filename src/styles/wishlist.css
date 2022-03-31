@@ -1,0 +1,39 @@
+/*
+    Author: Vrushabh Dhatrak
+    Release: 0.1
+    Description : Wishlist CSS
+*/
+.wishlist-container {
+    margin:0;
+    padding:0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:1fr;
+    
+    grid-template-areas: 
+    "header"
+    "wishlist-results"
+    "wishlist-cards"
+    "footer";
+}
+
+.wishlist-results {
+    grid-column: wishlist-results;
+    margin: 15rem 0 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wishlist-cards-container {
+    margin: 2rem 17rem;
+    grid-column: wishlist-cards;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, 25rem);
+}
+
+.footer {
+    grid-column: footer;
+}
