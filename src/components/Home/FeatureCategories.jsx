@@ -3,7 +3,6 @@ import { useData } from "../../context";
 
 const FeatureCategories = () => {
     const { state: { categories }, } = useData();
-    console.log(categories)
     const content = categories.map(
         ({ categoryName, id, description, offer, productImg, bedgeCss }) => (
             <div key={id} className="container-card md-card-width">

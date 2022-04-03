@@ -20,11 +20,7 @@ export const fetchAllProducts = async (dispatch, setShowLoader) => {
 
 export const getProductBasedOnId = async (dispatch, id) => {
     try {
-        const { data: { product } } = await axios({
-            method: "GET",
-            url: `/api/products/${id}`,
-        })
-        debugger;
+        const { data: { product } } = await axios.get(`/api/products/${id}`)
         if (product) {
             //// show success message
             dispatch({ type: "GET-PRODUCT-BASED-ON-ID", payload: product })
