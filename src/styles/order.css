@@ -25,7 +25,6 @@
     grid-column:order-section;
     grid-column: order-section;
     margin: 30rem 10rem;
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
