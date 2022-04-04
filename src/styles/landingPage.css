@@ -1,0 +1,142 @@
+/*
+    Author: Vrushabh Dhatrak
+    Release: 0.1
+    Description : Landing Page CSS
+*/
+/* Starting Template for entire Project Holy Grail Layout */
+.landing_page_container {
+    margin:0;
+    padding:0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:1fr;
+    
+    grid-template-areas: 
+    "header header header header header"
+    "offer offer offer offer offer"
+    "banner banner banner banner banner"
+    "feature-categories feature-categories feature-categories feature-categories feature-categories"
+    "testimonials testimonials testimonials testimonials testimonials"
+    "footer footer footer footer footer"
+    ;
+
+}
+/* Header Component For Entire Project */
+.header-container {
+    grid-column: header;
+} 
+
+/* offers section Starting Here */
+.offers {
+    grid-column: offer;
+    margin-top: 13rem;
+    display: flex;
+    justify-content: center;
+    background: #f2f2f2;
+}
+
+/* Banner section Starting Here */
+.banner .custom-img-responsive img {
+    width:100%;
+    grid-column:banner;
+    height: 60vh;
+    position: relative;
+}
+
+.banner .banner-content .banner-main-heading {
+    position: absolute;
+    top: 30%;
+    left: 43%;
+}
+
+.sub-banner-heading.head-1  {
+    position: absolute;
+    top: 44%;
+    left: 31%;
+    font-size: 8rem; 
+}
+
+.heading-animate {
+    background: linear-gradient(to right,#095fab 10%, #25abe8 50%, #57d75b 60%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 5.5s linear infinite;
+    display: inline-block;
+}
+
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+.sub-child-banner-heading {
+    position: absolute;
+    top: 58%;
+    left: 33%;
+}
+
+.show-now-btn{
+    position: absolute;
+    top: 70%;
+    left: 46%;
+}
+
+/* Featured Categories section Starting Here */
+.feature-categories {
+    grid-column:feature-categories;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.feature-categories .feature-cards-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Featured Brands section Starting Here */
+.feature-brands {
+    grid-column:feature-brands;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card_img {
+  height: 23rem !important;
+}
+
+.feature-brands .brand-img-div .basic-img-responsive-three-column {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+/* Testimonials section Starting Here */
+.testimonials {
+    grid-column:testimonials;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.testimonials  .testimonials-cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+/* Footer section Starting Here */
+.footer {
+    grid-column:footer;
+    margin: 5rem 0 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 2rem 0 2rem 0;
+}  

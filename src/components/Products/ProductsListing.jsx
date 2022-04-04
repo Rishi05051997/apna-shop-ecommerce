@@ -4,16 +4,18 @@ import Footer from "../Layout/Footer";
 import { ProductsFilterAside } from "./Product-Filter-Aside/Product-Filter-Aside";
 import Product from "./Product";
 import { useData } from "../../context/data-context";
+import { getSortedProducts, getFilteredProducts } from "../../Utils/Products-filteration";
 import emptyCart from "./../../assets/empty-cart.svg"
 
 
 
 
 const ProductsListing = ({ loader }) => {
-    const {
-        state: { products }
-    } = useData();
+    const { state: { products, sortBy, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter }} = useData();
 
+    const sortedProducts = getSortedProducts(products, sortBy);
+    const filteredProducts = getFilteredProducts(sortedProducts, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter);
+  
 
     useEffect(() => {
         document.title = "APNA SHOP | Products";
@@ -29,7 +31,7 @@ const ProductsListing = ({ loader }) => {
             <div className="header-container"></div>
             <section className="filter-results">
                 <div className="text-3">
-                    <span className="bold">Filtered Results</span> - {products.length}
+                    <span className="bold">Filtered Results</span> - {filteredProducts.length}
                 </div>
 
 
@@ -38,8 +40,9 @@ const ProductsListing = ({ loader }) => {
             < ProductsFilterAside />
             <div className="cards-section mar-y-3">
                 {
-                    products.length > 0 ? (
-                        products.map((item) => (
+
+                    filteredProducts.length > 0 ? (
+                        filteredProducts.map((item) => (
                             <div key={item._id}>
                                 <Product products={item} />
                             </div>

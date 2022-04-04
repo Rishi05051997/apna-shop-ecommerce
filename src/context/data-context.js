@@ -2,9 +2,6 @@ import { createContext, useContext, useReducer, useState } from "react";
 import { dataReducer } from "../reducers/dataReducer";
 
 const dataContext = createContext(null);
-
-
-
 const initialState = {
     products: [],
     oneProduct: [],
