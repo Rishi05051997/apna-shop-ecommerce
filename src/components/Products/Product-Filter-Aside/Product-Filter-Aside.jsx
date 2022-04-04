@@ -149,39 +149,6 @@ export const ProductsFilterAside = () => {
                     )
                 }
             </section>
-            {/* <section class="categories mar-xl">
-                <div class="head-3 highlightMainText">Categories</div>
-                <div class="checkbox-div mar-y-1">
-                    <input type="checkbox" name="type-1" id="type-1" />
-                    <label class="text-2 bold" for="type-1">
-                        Casual Shirts
-                    </label>
-                </div>
-                <div class="checkbox-div mar-y-1">
-                    <input type="checkbox" name="type-2" id="type-2" />
-                    <label class="text-2 bold" for="type-2">
-                        Formal Shirts
-                    </label>
-                </div>
-                <div class="checkbox-div mar-y-1">
-                    <input type="checkbox" name="type-3" id="type-3" />
-                    <label class="text-2 bold" for="type-3">
-                        Half Shirts
-                    </label>
-                </div>
-                <div class="checkbox-div mar-y-1">
-                    <input type="checkbox" name="type-4" id="type-4" />
-                    <label class="text-2 bold" for="type-4">
-                        Dress Code Shirts
-                    </label>
-                </div>
-                <div class="checkbox-div mar-y-1">
-                    <input type="checkbox" name="type-4" id="type-4" />
-                    <label class="text-2 bold" for="type-4">
-                        T-Shirts
-                    </label>
-                </div>
-            </section> */}
         </aside>
     )
 }

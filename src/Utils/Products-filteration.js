@@ -1,10 +1,10 @@
 export const getSortedProducts = (originalData, sortBy) => {
     const productList = [...originalData];
     if (sortBy && sortBy === "HIGH_TO_LOW") {
-        return productList.sort((a, b) => b.finalPrice - a.finalPrice);
+        return [...productList].sort((a, b) => b.finalPrice - a.finalPrice);
     }
     if (sortBy && sortBy === "LOW_TO_HIGH") {
-        return productList.sort((a, b) => a.finalPrice - b.finalPrice);
+        return [...productList].sort((a, b) => a.finalPrice - b.finalPrice);
     }
     return productList;
 };
