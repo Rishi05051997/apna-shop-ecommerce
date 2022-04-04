@@ -4,9 +4,7 @@ import { API_URL } from "./apiUrl";
 export const fetchAllProducts = async (dispatch, setShowLoader) => {
     try {
         setShowLoader(true);
-        const {
-            data: { products },
-        } = await axios.get(`${API_URL}/products`);
+        const { data: { products } } = await axios.get(`${API_URL}/products`);
         if (products) {
             dispatch({ type: "SET_PRODUCTS", payload: products });
         }
@@ -20,15 +18,10 @@ export const fetchAllProducts = async (dispatch, setShowLoader) => {
 
 export const getProductBasedOnId = async (dispatch, id) => {
     try {
-        const { data: { product } } = await axios({
-            method: "GET",
-            url: `/api/products/${id}`,
-        })
-        debugger;
+        const { data: { product } } = await axios.get(`/api/products/${id}`)
         if (product) {
             //// show success message
             dispatch({ type: "GET-PRODUCT-BASED-ON-ID", payload: product })
-
         }
     } catch (error) {
         console.log(error)

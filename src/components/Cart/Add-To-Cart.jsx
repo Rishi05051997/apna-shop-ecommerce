@@ -22,24 +22,19 @@ export const AddToCart = ({ product, btnNormalCss, btnSuccessCss }) => {
         updateWishlist(product, isWishlisted, dispatch, setShowLoader, setIsError);
         updateCart(product, "ADD", dispatch, setShowLoader, setIsError);
     };
+
+    const AddToCartHandler = () => {
+        isItemInCart ? navigate("/cart") : login ? isWishlisted ? updateLists()
+            : updateCart(product, "ADD", dispatch, setShowLoader, setIsError)
+            : dispatch({ type: "ADD_TO_CART", payload: product });
+    }
     return (
         <>
             <button
                 type="button"
                 disabled={!product.inStock}
                 className={isItemInCart ? btnNormalCss : btnSuccessCss}
-                onClick={() => {
-                    isItemInCart
-                        ? navigate("/cart")
-                        : login
-                            ? isWishlisted
-                                ? updateLists()
-                                : updateCart(product, "ADD", dispatch, setShowLoader, setIsError)
-                            : dispatch({
-                                type: "ADD_TO_CART",
-                                payload: product,
-                            });
-                }}
+                onClick={() => AddToCartHandler}
             >
                 {isItemInCart ? "Go to Cart" : "Add to Cart"}
             </button>
