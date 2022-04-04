@@ -8,6 +8,14 @@ import "./styles/main.css";
 export default function App() {
   const { state: { toastMsg }, dispatch, isError } = useData();
   const [loader, setLoader] = useState(false);
+  const { login, setShowLoader } = useAuthContext();
+  useEffect(() => {
+    if (login) {
+      axios.defaults.headers.common["Authorization"] = login.token;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+  }, [login])
   useEffect(() => {
     (async () => {
       await fetchCategories(dispatch, setLoader);
@@ -19,7 +27,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/products" element={<ProductsListing loader={loader} />} />
+        <Route path="/products" element={<ProductsListing loader={loader} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/ProductDetails/:id" element={<ProductDetails />} />
