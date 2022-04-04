@@ -11,12 +11,11 @@ import emptyCart from "./../../assets/empty-cart.svg"
 
 
 const ProductsListing = ({ loader }) => {
-    const {
-        state: { products, sortBy, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter }
-    } = useData();
+    const { state: { products, sortBy, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter }} = useData();
 
     const sortedProducts = getSortedProducts(products, sortBy);
     const filteredProducts = getFilteredProducts(sortedProducts, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter);
+  
 
     useEffect(() => {
         document.title = "APNA SHOP | Products";
@@ -41,6 +40,7 @@ const ProductsListing = ({ loader }) => {
             < ProductsFilterAside />
             <div className="cards-section mar-y-3">
                 {
+
                     filteredProducts.length > 0 ? (
                         filteredProducts.map((item) => (
                             <div key={item._id}>

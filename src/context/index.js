@@ -1,2 +1,2 @@
-// export { useAuthContext } from "./auth-context";
+export { useAuthContext } from "./auth-context";
 export { useData } from "./data-context";
