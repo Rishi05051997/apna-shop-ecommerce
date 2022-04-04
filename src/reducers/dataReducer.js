@@ -1,5 +1,6 @@
 export const dataReducer = (state, { type, payload }) => {
     switch (type) {
+
         case "SORT":
             return { ...state, sortBy: payload };
         case "TOGGLE_STOCK":
@@ -28,6 +29,10 @@ export const dataReducer = (state, { type, payload }) => {
                 cotton: false,
                 tericot: false
             };
+        
+        case "SET_CATEGORIES":
+            return { ...state, categories: payload };
+        
         default:
             return state;
     }
