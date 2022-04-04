@@ -31,29 +31,19 @@ const AuthenticationProvider = ({ children }) => {
     const [showMsg, setShowMsg] = useState(true);
 
     const loginUser = async (email, password) => {
+        const postData = { email, password }
         if (!isPasswordValid(password)) {
             setErrorMsg("Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters.")
             setShowMsg(true);
         } else {
             try {
-                const { data: { foundUser, encodedToken } } = await axios({
-                    method: 'post',
-                    url: `${API_URL}/auth/login`,
-                    data: {
-                        email,
-                        password
-                    }
-                })
+                const { data: { foundUser, encodedToken } } = await axios.post(`${API_URL}/auth/login`, JSON.stringify(postData))
                 localStorage.setItem("token", encodedToken)
-                // console.log(user)
-                // const decoded = jwt_decode(token);
-                // const loginData = { token: `Bearer ${token}`, user: decoded.name };
                 setLogin(foundUser);
                 localStorage.setItem("login", JSON.stringify(foundUser));
                 userDispatch({ type: "CLEAR" });
                 return foundUser;
             } catch (error) {
-                // console.error(error);
             }
         }
     };
@@ -65,6 +55,7 @@ const AuthenticationProvider = ({ children }) => {
     };
 
     const registerUser = async (firstName, lastName, email, password) => {
+        const postData = { firstName, lastName, email, password }
         if (firstName === "" || lastName === "") {
             setErrorMsg("First Name or Last Name is empty");
             setShowMsg(true);
@@ -74,12 +65,7 @@ const AuthenticationProvider = ({ children }) => {
             setShowMsg(true);
         } else {
             try {
-                const { data } = await axios({
-                    method: "post",
-                    url: `${API_URL}/auth/signup`,
-                    data: { firstName, lastName, email, password }
-                })
-                debugger;
+                const { data } = await axios.post(`${API_URL}/auth/signup`, JSON.stringify(postData))
                 const { createdUser, encodedToken } = data;
                 setLogin(createdUser);
                 localStorage.setItem("login", JSON.stringify(createdUser));
@@ -88,7 +74,6 @@ const AuthenticationProvider = ({ children }) => {
                 return data;
             } catch (err) {
                 const errorResponse = JSON.stringify(err.response.data);
-                console.error(errorResponse);
                 return err.response.data;
             }
         }

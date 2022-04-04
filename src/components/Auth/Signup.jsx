@@ -22,8 +22,6 @@ const Signup = () => {
                 navigate("/")
             }
         } catch (error) {
-            // setErrorMsg(error);
-            // setShowMsg(true)
             console.log(error)
         } finally {
             setShowLoader(false)
