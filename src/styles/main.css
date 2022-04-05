@@ -5,3 +5,10 @@
 */
 /*************** Different Page Imports ***************/
 @import "./profile.css";
+@import "https://memorable-ui.netlify.app/styles/main.css";
+@import "./cart.css";
+@import "./filterPage.css";
+@import "./productDetails.css";
+@import "./landingPage.css";
+@import "./utils.css";
+@import "./order.css"
