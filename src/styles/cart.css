@@ -1,0 +1,76 @@
+/*
+    Author: Vrushabh Dhatrak
+    Release: 0.1
+    Description : Cart CSS
+*/
+.cart-container {
+    margin:0;
+    padding:0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:1fr;
+    
+    grid-template-areas: 
+    "header"
+    "my-cart-section"
+    "cart-main-section"
+    "footer"
+    ;
+}
+/* Header Component For Entire Project */
+.header-container {
+    grid-column: header;
+}
+
+/* Filter Results For Entire Project */
+.my-cart-section {
+    grid-column: my-cart-section;
+    margin: 15rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* cards section For Entire Project */
+.cart-main-section {
+    grid-column:cart-main-section;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* footer section For Entire Project */
+.footer {
+    grid-column:footer;
+}
+/* Totals section  */
+
+.totals-item {
+    clear: both;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.price-label {
+    float: left;
+    clear: both;
+    width: 79%;
+    text-align: right;
+}
+
+.totals-value {
+    float: right;
+    width: 21%;
+    text-align: right;
+}
+
+.flex-row {
+    align-items: center;
+}
+
+/* ***NO Cart Section*** */
+.no-cart-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
