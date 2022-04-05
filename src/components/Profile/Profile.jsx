@@ -8,8 +8,6 @@ const Profile = () => {
     const { login: { firstName, lastName, email }, logOutUser, showLoader } = useAuthContext();
     const { state: { showModal } } = useData();
 
-
-
     return showLoader ? (
         <div className="loader-container">
             <div className="loader-container">
