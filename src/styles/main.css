@@ -4,11 +4,13 @@
     Description : Main CSS
 */
 /*************** Different Page Imports ***************/
-@import "./profile.css";
 @import "https://memorable-ui.netlify.app/styles/main.css";
-@import "./cart.css";
-@import "./filterPage.css";
-@import "./productDetails.css";
 @import "./landingPage.css";
+@import "./filterPage.css";
+@import "./wishlist.css";
+@import "./cart.css";
+@import "./profile.css";
 @import "./utils.css";
-@import "./order.css"
+@import "./form.css";
+@import "./productDetails.css";
+@import "./order.css";

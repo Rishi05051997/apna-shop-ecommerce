@@ -1,3 +1,4 @@
+export * from "./wishlist-service";
 export * from "./cart-service";
 export * from "./products-Service";
 // export * from "./cart-service";
