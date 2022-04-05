@@ -5,7 +5,6 @@
 */
 /*************** Different Page Imports ***************/
 @import "https://memorable-ui.netlify.app/styles/main.css";
-
 @import "./landingPage.css";
 @import "./filterPage.css";
 @import "./wishlist.css";

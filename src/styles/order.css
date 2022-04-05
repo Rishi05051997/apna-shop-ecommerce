@@ -1,0 +1,38 @@
+/*
+    Author: Vrushabh Dhatrak
+    Release: 0.1
+    Description : Order CSS
+*/
+.order-container {
+    margin:0;
+    padding:0;
+    display: grid;
+    height: 100vh;
+    grid-template-columns:1fr;
+    
+    grid-template-areas: 
+    "header"
+    "order-section"
+    "footer"
+    ;
+}
+
+.header-container {
+    grid-column:header;
+}
+
+.order-section {
+    grid-column:order-section;
+    grid-column: order-section;
+    margin: 30rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    padding: 5rem;
+    border-radius: 3rem;
+}
+
+.footer {
+    grid-column: footer;
+}
