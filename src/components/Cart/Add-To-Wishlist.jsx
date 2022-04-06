@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { useAuthContext, useData } from "./../../context/index";
 import { itemExists } from "./../../Utils/arrays-utility";
 import { updateWishlist } from "./../../services/index";
+import { Icon } from "@iconify/react"
 
 export const AddToWishlist = ({ product }) => {
     const { state: { itemsInWishlist }, dispatch } = useData();
@@ -16,14 +17,15 @@ export const AddToWishlist = ({ product }) => {
                     ? updateWishlist(product, isWishlisted, dispatch, setShowLoader)
                     : navigate("/login")
             } >
-                {/* <i
-                    className={
+                <Icon
+                    className="iconify"
+                    icon={
                         isWishlisted
-                            ? "fas fa-heart fa-lg wish-active"
-                            : "far fa-heart fa-lg wish-inactive"
+                            ? "ant-design:heart-filled"
+                            : "ant-design:heart-outlined"
                     }
-                    
-                ></i> */}
+
+                />
                 Wishlist
             </button>
 
