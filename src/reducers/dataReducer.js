@@ -61,7 +61,7 @@ export const dataReducer = (state, { type, payload }) => {
                 ...state,
                 showModal: !state.showModal
             }
-        
+
         case "SET_CART":
             return { ...state, itemsInCart: payload };
 
@@ -146,9 +146,12 @@ export const dataReducer = (state, { type, payload }) => {
                 cotton: false,
                 tericot: false
             };
-        
+
         case "SET_CATEGORIES":
             return { ...state, categories: payload };
+
+        case "SHOW_TOAST":
+            return { ...state, toastMsg: payload };
 
         default:
             return state;
