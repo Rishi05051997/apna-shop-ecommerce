@@ -7,7 +7,6 @@ import { useAuthContext } from "../../context";
 
 const Nav = () => {
     const { login, logOutUser } = useAuthContext()
-    console.log(login)
     const { firstName } = login;
     const [searchTxt, setSearchTxt] = useState("");
     const {
