@@ -3,28 +3,20 @@ import { useAuthContext, useData } from "../../context/index";
 import { useNavigate } from "react-router-dom";
 import { RotatingSquare } from "react-loader-spinner";
 
-const Signup = () => {
+export const Signup = () => {
 
-    const { userState: { firstName, lastName, email, password }, registerUser, userDispatch, ErrorMsg, showMsg, setShowLoader, showLoader } = useAuthContext();
+    const { userState: { firstName, lastName, email, password }, registerUser, userDispatch, ErrorMsg, showMsg, showLoader } = useAuthContext();
     const { dispatch } = useData();
     const navigate = useNavigate();
 
     const onFormSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            setShowLoader(true);
-            const { createdUser } = await registerUser(firstName, lastName, email, password)
-            if (createdUser) {
-                ///// show success message
-                const { firstName } = createdUser;
-                dispatch({ type: "SHOW_TOAST", payload: `${firstName} created successfully in DB` })
-                navigate("/")
-            }
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setShowLoader(false)
+        const { createdUser } = await registerUser(firstName, lastName, email, password)
+        if (createdUser) {
+            ///// show success message
+            const { firstName } = createdUser;
+            dispatch({ type: "SHOW_TOAST", payload: `${firstName} created successfully in DB` })
+            navigate("/")
         }
 
     }
@@ -131,5 +123,3 @@ const Signup = () => {
         </div>
     );
 };
-
-export default Signup;
