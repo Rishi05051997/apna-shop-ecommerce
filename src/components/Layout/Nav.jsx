@@ -64,7 +64,7 @@ const Nav = () => {
                             <Icon icon="ant-design:search-outlined" />
                         </span>
 
-                        <label for="name" className="input-label text-2">
+                        <label htmlFor="name" className="input-label text-2">
                             Name
                         </label>
                     </div>
