@@ -1,14 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { fetchCategories } from "./services/index"
-import Home from "./components/Home/Home";
-import { useData } from "./context/data-context";
 import Nav from "./components/Layout/Nav";
+import "./styles/theme.css";
 import "./styles/main.css";
+import { Signup, ChangePassword, Login } from "./components/Auth/index";
+import Cart from "./components/Cart/Cart";
+import Wishlist from "./components/Wishlist/Wishlist";
+import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Profile from "./components/Profile/Profile";
+import ProductsListing from "./components/Products/ProductsListing";
+import { fetchAllProducts, initUserCart, fetchCategories, initUserAddress, initializeUserWishlist, updateCart } from "./services/index"
+import { useData } from "./context/data-context";
+import { useAuthContext } from "./context/auth-context";
+import axios from "axios"
+import { Toast } from "./components/Toast/Toast";
+import { Order } from "./components/Private/Order/Order";
+
 export default function App() {
-  const { state: { toastMsg }, dispatch, isError } = useData();
-  const [loader, setLoader] = useState(false);
+  ;
+  const { state: { toastMsg, cartItems }, dispatch, isError } = useData()
   const { login, setShowLoader } = useAuthContext();
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      await fetchAllProducts(dispatch, setLoader);
+      await fetchCategories(dispatch, setLoader);
+      await initUserAddress(dispatch);
+
+    })();
+  }, [dispatch]);
+
+
   useEffect(() => {
     if (login) {
       axios.defaults.headers.common["Authorization"] = login.token;
@@ -16,18 +40,34 @@ export default function App() {
       delete axios.defaults.headers.common["Authorization"];
     }
   }, [login])
+
   useEffect(() => {
-    (async () => {
-      await fetchCategories(dispatch, setLoader);
-    })();
-  }, [dispatch]);
+    if (login) {
+      if (cartItems) {
+        cartItems.forEach((product) => {
+          (async () => {
+            while (product.quantity-- > 0) {
+              await updateCart(product, "ADD", dispatch, setShowLoader);
+            }
+          })();
+        });
+      }
+      (async () => {
+        await initUserCart(dispatch);
+        await initializeUserWishlist(dispatch);
+
+      })();
+    }
+  }, [login]);
+
   return (
     <div  >
-      < Nav />
+      <Nav />
+      <div>{toastMsg && <Toast isError={isError} />}</div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/products" element={<ProductsListing loader={loader} />
+        <Route path="/products" element={<ProductsListing loader={loader} />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/ProductDetails/:id" element={<ProductDetails />} />
@@ -35,7 +75,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/change-password" element={<ChangePassword />} />
-        <Route path="/order" element={< Order />} /> */}
+        <Route path="/order" element={< Order />} />
       </Routes>
     </div>
   );
