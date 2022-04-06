@@ -34,7 +34,7 @@ export const AddToCart = ({ product, btnNormalCss, btnSuccessCss }) => {
                 type="button"
                 disabled={!product.inStock}
                 className={isItemInCart ? btnNormalCss : btnSuccessCss}
-                onClick={() => AddToCartHandler}
+                onClick={() => AddToCartHandler()}
             >
                 {isItemInCart ? "Go to Cart" : "Add to Cart"}
             </button>
