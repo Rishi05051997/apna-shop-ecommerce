@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./components/Layout/Nav";
 import "./styles/main.css";
-import { Signup, ChangePassword, Login } from "./components/Auth/index";
+import { Signup, ChangePassword, Login } from "./components/Auth";
 import Cart from "./components/Cart/Cart";
 import Wishlist from "./components/Wishlist/Wishlist";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import ProductsListing from "./components/Products/ProductsListing";
-import { fetchAllProducts, initUserCart, fetchCategories, initUserAddress, initializeUserWishlist, updateCart } from "./services/index"
+import { fetchAllProducts, initUserCart, fetchCategories, initUserAddress, initializeUserWishlist, updateCart } from "./services"
 import { useData } from "./context/data-context";
 import { useAuthContext } from "./context/auth-context";
 import axios from "axios"
