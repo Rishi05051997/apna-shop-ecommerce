@@ -56,7 +56,7 @@ export default function App() {
 
       })();
     }
-  }, [login]);
+  }, [login, cartItems, setShowLoader, dispatch]);
 
   return (
     <div  >

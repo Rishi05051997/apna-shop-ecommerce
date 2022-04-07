@@ -14,7 +14,7 @@ const ProductDetails = () => {
         (async () => {
             await getProductBasedOnId(dispatch, id);
         })();
-    }, [dispatch])
+    }, [dispatch, id])
     useEffect(() => {
         document.title = "APNA SHOP | Product Details";
     }, []);
