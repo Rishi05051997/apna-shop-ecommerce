@@ -31,19 +31,30 @@ const AuthenticationProvider = ({ children }) => {
     const [showMsg, setShowMsg] = useState(true);
 
     const loginUser = async (email, password) => {
-        const postData = { email, password }
         if (!isPasswordValid(password)) {
             setErrorMsg("Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters.")
             setShowMsg(true);
         } else {
             try {
-                const { data: { foundUser, encodedToken } } = await axios.post(`${API_URL}/auth/login`, JSON.stringify(postData))
+                setShowLoader(true);
+                const { data: { foundUser, encodedToken } } = await axios({
+                    method: 'post',
+                    url: `${API_URL}/auth/login`,
+                    data: {
+                        email,
+                        password
+                    }
+                })
                 localStorage.setItem("token", encodedToken)
                 setLogin(foundUser);
                 localStorage.setItem("login", JSON.stringify(foundUser));
                 userDispatch({ type: "CLEAR" });
                 return foundUser;
-            } catch (error) {
+            } catch (err) {
+                setErrorMsg("Something Went Wrong!!!!")
+                setShowMsg(true);
+            } finally {
+                setShowLoader(false);
             }
         }
     };
@@ -55,7 +66,6 @@ const AuthenticationProvider = ({ children }) => {
     };
 
     const registerUser = async (firstName, lastName, email, password) => {
-        const postData = { firstName, lastName, email, password }
         if (firstName === "" || lastName === "") {
             setErrorMsg("First Name or Last Name is empty");
             setShowMsg(true);
@@ -65,7 +75,12 @@ const AuthenticationProvider = ({ children }) => {
             setShowMsg(true);
         } else {
             try {
-                const { data } = await axios.post(`${API_URL}/auth/signup`, JSON.stringify(postData))
+                const { data } = await axios({
+                    method: "post",
+                    url: `${API_URL}/auth/signup`,
+                    data: { firstName, lastName, email, password }
+                })
+                debugger;
                 const { createdUser, encodedToken } = data;
                 setLogin(createdUser);
                 localStorage.setItem("login", JSON.stringify(createdUser));
@@ -73,8 +88,10 @@ const AuthenticationProvider = ({ children }) => {
                 userDispatch({ type: "CLEAR" });
                 return data;
             } catch (err) {
-                const errorResponse = JSON.stringify(err.response.data);
-                return err.response.data;
+                setErrorMsg("Something Went Wrong!!!!")
+                setShowMsg(true);
+            } finally {
+                setShowLoader(false);
             }
         }
     };

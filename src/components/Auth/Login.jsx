@@ -3,19 +3,18 @@ import { RotatingSquare } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/auth-context";
 
-const Login = () => {
+export const Login = () => {
 
-    const { loginUser, userState: { email, password }, userDispatch, showLoader, setShowLoader, ErrorMsg } = useAuthContext();
+    const { loginUser, userState: { email, password }, userDispatch, showLoader, ErrorMsg } = useAuthContext();
     const navigate = useNavigate();
 
 
     const onFormSubmit = async (e) => {
         e.preventDefault();
-        setShowLoader(true)
+        console.log(email, password)
         const foundUser = await loginUser(email, password)
         if (!foundUser) {
         } else {
-            setShowLoader(false);
             navigate("/products")
         }
     }
@@ -37,7 +36,7 @@ const Login = () => {
                             className="input-field"
                             autocomplete="off"
                             placeholder=" "
-
+                            value={email}
                             onChange={(e) => userDispatch({ type: "SET-EMAIL", payload: e.target.value })}
                         />
                         <label for="email" className="input-label text-2">
@@ -51,7 +50,7 @@ const Login = () => {
                             className="input-field"
                             autocomplete="off"
                             placeholder=" "
-
+                            value={password}
                             onChange={(e) => userDispatch({ type: "SET-PASSWORD", payload: e.target.value })}
                         />
                         <span
@@ -66,6 +65,12 @@ const Login = () => {
                         <button type="submit" className="btn btn-primary form-btn text-2 bold">
                             Login
                         </button>
+                    </div>
+                    <div className="mar-y-3">
+                        <span className="btn btn-link head-4" onClick={() => {
+                            userDispatch({ type: "SET-EMAIL", payload: "v@gmail.com" });
+                            userDispatch({ type: "SET-PASSWORD", payload: "Vrushabh@123" })
+                        }}>Add Test Credentials</span>
                     </div>
                     <div className="mar-y-2 head-4">
                         {ErrorMsg && <p className="highlightMainText">{ErrorMsg}</p>}
@@ -90,4 +95,3 @@ const Login = () => {
     );
 };
 
-export default Login;
