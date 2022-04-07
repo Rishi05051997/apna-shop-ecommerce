@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./components/Layout/Nav";
-import "./styles/theme.css";
 import "./styles/main.css";
 import { Signup, ChangePassword, Login } from "./components/Auth/index";
 import Cart from "./components/Cart/Cart";
@@ -18,8 +17,7 @@ import { Toast } from "./components/Toast/Toast";
 import { Order } from "./components/Private/Order/Order";
 
 export default function App() {
-  ;
-  const { state: { toastMsg, cartItems }, dispatch, isError } = useData()
+  const { state: { toastMsg, cartItems }, dispatch, isError } = useData();
   const { login, setShowLoader } = useAuthContext();
   const [loader, setLoader] = useState(false);
 
