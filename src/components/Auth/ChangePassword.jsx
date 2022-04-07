@@ -1,6 +1,6 @@
 import Footer from "../Layout/Footer";
 
-const ChangePassword = () => {
+export const ChangePassword = () => {
     return (
         <div class="login-container">
             <section class="form-section">
@@ -78,5 +78,3 @@ const ChangePassword = () => {
         </div>
     );
 };
-
-export default ChangePassword;
