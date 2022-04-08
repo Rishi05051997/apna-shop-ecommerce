@@ -1,4 +1,4 @@
-import Footer from "../Layout/Footer";
+import Footer from "../Layout";
 import { useAuthContext, useData } from "../../context";
 import { useEffect } from "react";
 import { WishlistItem } from "./WishlistItem";

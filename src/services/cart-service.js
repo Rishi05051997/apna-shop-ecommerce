@@ -1,20 +1,19 @@
 import { API_URL } from "./apiUrl";
 import axios from "axios"
 
-const encodedToken = localStorage.getItem("token");
+
 
 export const initUserCart = async (dispath) => {
     const { data: { cart } } = await axios({
         method: 'get',
         url: `${API_URL}/user/cart`,
     })
-    console.log(cart)
     if (cart) {
         dispath({ type: "SET_CART", payload: cart })
     }
 }
 
-export const deleteItemFromCart = async (dispatch, product, setShowLoader, setIsError) => {
+export const deleteItemFromCart = async (dispatch, product, setShowLoader, setIsError, token) => {
 
     try {
         setShowLoader(true)
@@ -22,7 +21,7 @@ export const deleteItemFromCart = async (dispatch, product, setShowLoader, setIs
             method: 'delete',
             url: `/api/user/cart/${product._id}`,
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (data) {
@@ -38,26 +37,28 @@ export const deleteItemFromCart = async (dispatch, product, setShowLoader, setIs
     }
 }
 
-export const updateCart = async (item, updateAction, dispatch, setShowLoader, setIsError) => {
+export const updateCart = async (item, updateAction, dispatch, setShowLoader, setIsError, token) => {
+
+    debugger;
     try {
 
         switch (updateAction.toUpperCase()) {
             case "ADD":
-                addDataToCartHandler(item, encodedToken, dispatch, setShowLoader, setIsError)
+                addDataToCartHandler(item, token, dispatch, setShowLoader, setIsError)
                 break;
             case "INCREMENT_IN_CART":
-                incrementFromCartHandler(item, encodedToken, dispatch, setShowLoader, setIsError)
+                incrementFromCartHandler(item, token, dispatch, setShowLoader, setIsError)
                 break;
             case "DECREMENT_FROM_CART":
                 debugger;
                 if (item.quantity <= 1) {
-                    deleteItemFromCart(dispatch, item, setShowLoader, setIsError)
+                    deleteItemFromCart(dispatch, item, setShowLoader, setIsError, token)
                 } else {
-                    decrementFromCartHandler(item, encodedToken, dispatch, setShowLoader, setIsError)
+                    decrementFromCartHandler(item, token, dispatch, setShowLoader, setIsError, token)
                 }
                 break;
             case "MOVE_WISHLIST":
-                addDataToWishlistHandler(item, encodedToken, dispatch, setShowLoader, setIsError);
+                addDataToWishlistHandler(item, token, dispatch, setShowLoader, setIsError, token);
                 break;
 
             default:
@@ -72,21 +73,20 @@ export const updateCart = async (item, updateAction, dispatch, setShowLoader, se
 
 
 ///// Utility -->> cart
-const addDataToCartHandler = async (item, encodedToken, dispatch, setShowLoader, setIsError) => {
+const addDataToCartHandler = async (item, token, dispatch, setShowLoader, setIsError) => {
     const product = { product: item }
     try {
-        debugger
         setShowLoader(true)
-        const { data: { cart } } = await axios({
-            method: 'post',
-            url: `/api/user/cart`,
-            data: JSON.stringify(product),
-            headers: {
-                authorization: encodedToken
-            }
-        })
-        if (cart) {
-
+        const { data: { cart } } =
+            await axios({
+                method: 'post',
+                url: `/api/user/cart`,
+                data: JSON.stringify(product),
+                headers: {
+                    authorization: token
+                }
+            })
+        if (!cart) { } else {
             dispatch({
                 type: "ADD_TO_CART",
                 payload: item,
@@ -94,7 +94,9 @@ const addDataToCartHandler = async (item, encodedToken, dispatch, setShowLoader,
         }
     } catch (error) {
         setIsError(true);
+        debugger;
         dispatch({ type: "SHOW_TOAST", payload: "Something Went Wrong" });
+        console.error(error)
         return error;
     } finally {
         setShowLoader(false);
@@ -104,7 +106,7 @@ const addDataToCartHandler = async (item, encodedToken, dispatch, setShowLoader,
 
 
 
-const decrementFromCartHandler = async (product, encodedToken, dispatch, setShowLoader, setIsError) => {
+const decrementFromCartHandler = async (product, encodedToken, dispatch, setShowLoader, setIsError, token) => {
     try {
         setShowLoader(true)
         const { data: { cart } } = await axios({
@@ -116,7 +118,7 @@ const decrementFromCartHandler = async (product, encodedToken, dispatch, setShow
                 }
             },
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (cart) {
@@ -137,7 +139,7 @@ const decrementFromCartHandler = async (product, encodedToken, dispatch, setShow
     }
 }
 
-const incrementFromCartHandler = async (product, encodedToken, dispatch, setShowLoader, setIsError) => {
+const incrementFromCartHandler = async (product, token, dispatch, setShowLoader, setIsError) => {
     try {
         setShowLoader(true)
         const { data: { cart } } = await axios({
@@ -149,7 +151,7 @@ const incrementFromCartHandler = async (product, encodedToken, dispatch, setShow
                 }
             },
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (cart) {
@@ -170,7 +172,7 @@ const incrementFromCartHandler = async (product, encodedToken, dispatch, setShow
 }
 
 //// Utility -->> Wishlist
-const addDataToWishlistHandler = async (product, encodedToken, dispatch, setShowLoader, setIsError) => {
+const addDataToWishlistHandler = async (product, encodedToken, dispatch, setShowLoader, setIsError, token) => {
     try {
         setShowLoader(true)
         const { data: { wishlist } } = await axios({
@@ -178,7 +180,7 @@ const addDataToWishlistHandler = async (product, encodedToken, dispatch, setShow
             url: `/api/user/wishlist`,
             data: product,
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (wishlist) {

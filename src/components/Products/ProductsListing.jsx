@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { RotatingSquare } from "react-loader-spinner";
-import Footer from "../Layout/Footer";
+import { Footer } from "../Layout";
 import { ProductsFilterAside } from "./Product-Filter-Aside/Product-Filter-Aside";
 import Product from "./Product";
 import { useData } from "../../context/data-context";
@@ -10,12 +10,13 @@ import emptyCart from "./../../assets/empty-cart.svg"
 
 
 
-const ProductsListing = ({ loader }) => {
-    const { state: { products, sortBy, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter }} = useData();
+export const ProductsListing = ({ loader }) => {
+    const {
+        state: { products, sortBy, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter }
+    } = useData();
 
     const sortedProducts = getSortedProducts(products, sortBy);
     const filteredProducts = getFilteredProducts(sortedProducts, inStock, fastDelivery, priceRange, cotton, tericot, rating, searchValue, brandFilter, categoryFilter);
-  
 
     useEffect(() => {
         document.title = "APNA SHOP | Products";
@@ -40,12 +41,9 @@ const ProductsListing = ({ loader }) => {
             < ProductsFilterAside />
             <div className="cards-section mar-y-3">
                 {
-
                     filteredProducts.length > 0 ? (
                         filteredProducts.map((item) => (
-                            <div key={item._id}>
-                                <Product products={item} />
-                            </div>
+                            <Product products={item} />
                         ))
                     ) : (
                         <>
@@ -60,5 +58,3 @@ const ProductsListing = ({ loader }) => {
         </div>
     );
 };
-
-export default ProductsListing;

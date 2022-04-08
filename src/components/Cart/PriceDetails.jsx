@@ -11,14 +11,14 @@ const PriceDetails = ({ totalItems, cartTotal, login }) => {
                         id="apply-coupon"
                         type="text"
                         className="input-field"
-                        autocomplete="off"
+                        autoComplete="off"
                         placeholder=" "
                     />
                     <span
                         className="iconify icons text-2"
                         data-icon="whh:coupon"
                     ></span>
-                    <label for="apply-coupon" className="input-label text-2">
+                    <label htmlFor="apply-coupon" className="input-label text-2">
                         APPLY COUPON
                     </label>
                 </div>

@@ -8,25 +8,36 @@ const itemExistsInCart = (cartItems, productId) =>
         (cartItem) => cartItem._id === productId && cartItem.quantity > 0
     );
 
+
 export const AddToCart = ({ product, btnNormalCss, btnSuccessCss }) => {
 
     const {
         state: { itemsInCart, itemsInWishlist },
         dispatch, setIsError
     } = useData();
+    const encodedToken = localStorage.getItem("token");
     const { login, setShowLoader } = useAuthContext();
     const isItemInCart = itemExistsInCart(itemsInCart, product._id);
     const navigate = useNavigate();
     const isWishlisted = itemExists(itemsInWishlist, product._id);
     const updateLists = () => {
-        updateWishlist(product, isWishlisted, dispatch, setShowLoader, setIsError);
-        updateCart(product, "ADD", dispatch, setShowLoader, setIsError);
+        debugger
+        updateWishlist(product, isWishlisted, dispatch, setShowLoader, setIsError, encodedToken);
+        updateCart(product, "ADD", dispatch, setShowLoader, setIsError, encodedToken);
     };
 
     const AddToCartHandler = () => {
-        isItemInCart ? navigate("/cart") : login ? isWishlisted ? updateLists()
-            : updateCart(product, "ADD", dispatch, setShowLoader, setIsError)
-            : dispatch({ type: "ADD_TO_CART", payload: product });
+        debugger;
+        isItemInCart
+            ? navigate("/cart")
+            : login
+                ? isWishlisted
+                    ? updateLists()
+                    : updateCart(product, "ADD", dispatch, setShowLoader, setIsError, encodedToken)
+                : dispatch({
+                    type: "ADD_TO_CART",
+                    payload: product,
+                });
     }
     return (
         <>
