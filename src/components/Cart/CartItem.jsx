@@ -3,10 +3,11 @@ import { useAuthContext, useData } from "../../context";
 import { AddToWishlist } from "./Add-To-Wishlist";
 import { deleteItemFromCart, updateCart } from "./../../services/index";
 
-const CartItem = ({ product }) => {
+export const CartItem = ({ product }) => {
     const { _id, productImg, productName, description, vendorName, finalPrice, mainPrice, off, reviews, delivery, quantity } = product;
     const { login, setShowLoader } = useAuthContext();
     const { dispatch, setIsError } = useData();
+    const encodedToken = localStorage.getItem("token");
     return (<div className="container-card xxl-card-width mar-y-2">
         <div key={_id} className="card-header card-header-row">
             <div className="image-div mar-md">
@@ -38,10 +39,11 @@ const CartItem = ({ product }) => {
                         type="button"
 
                         className="btn btn-light text-3"
-                        onClick={() =>
+                        onClick={() => {
                             login
-                                ? updateCart(product, "DECREMENT_FROM_CART", dispatch, setShowLoader, setIsError)
+                                ? updateCart(product, "DECREMENT_FROM_CART", dispatch, setShowLoader, setIsError, encodedToken)
                                 : dispatch({ type: "DECREMENT_FROM_CART", payload: product })
+                        }
                         }
                     >
                         {quantity > 1 ? "-" : <span class="iconify cursor_">
@@ -58,7 +60,7 @@ const CartItem = ({ product }) => {
                         className="btn btn-light text-3"
                         onClick={() =>
                             login
-                                ? updateCart(product, "INCREMENT_IN_CART", dispatch, setShowLoader, setIsError)
+                                ? updateCart(product, "INCREMENT_IN_CART", dispatch, setShowLoader, setIsError, encodedToken)
                                 : dispatch({
                                     type: "ADD_TO_CART",
                                     payload: product,
@@ -71,7 +73,7 @@ const CartItem = ({ product }) => {
                 </div>
                 <div class="text-4 mar-y-2 flex-row">
                     < AddToWishlist product={product} />
-                    <button class="btn btn-outline-danger" onClick={() => login ? deleteItemFromCart(dispatch, product, setShowLoader, setIsError) : dispatch({ type: "REMOVE_FROM_CART", payload: product })}>Remove</button>
+                    <button class="btn btn-outline-danger" onClick={() => login ? deleteItemFromCart(dispatch, product, setShowLoader, setIsError, encodedToken) : dispatch({ type: "REMOVE_FROM_CART", payload: product })}>Remove</button>
                 </div>
 
             </div>

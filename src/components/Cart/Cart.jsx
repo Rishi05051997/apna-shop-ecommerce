@@ -1,4 +1,4 @@
-import Footer from "../Layout/Footer";
+import { Footer } from "../Layout";
 import { RotatingSquare } from "react-loader-spinner";
 import { useEffect } from "react";
 import { useData } from "../../context/data-context";
@@ -19,9 +19,11 @@ const Cart = () => {
         0
     );
     const totalItems = itemsInCart.reduce((acc, curr) => acc + curr.quantity, 0);
+
     useEffect(() => {
         document.title = "APNA SHOP | Cart";
     }, []);
+
 
 
     return showLoader ? (

@@ -1,12 +1,14 @@
 import { RotatingSquare } from "react-loader-spinner";
-import { useAuthContext, useData } from "../../context";
-import AddNewAddress from "../Cart/Address/add-new-address";
-import { AddressListing } from "../Cart/Address/AddressListing";
-import Footer from "../Layout/Footer";
+import { useAuthContext, useData } from "../../../context";
+import AddNewAddress from "../../Cart/Address/add-new-address";
+import { AddressListing } from "../../Cart/Address/AddressListing";
+import { Footer } from "../../Layout";
 
-const Profile = () => {
+export const Profile = () => {
     const { login: { firstName, lastName, email }, logOutUser, showLoader } = useAuthContext();
     const { state: { showModal } } = useData();
+
+
 
     return showLoader ? (
         <div className="loader-container">
@@ -61,6 +63,4 @@ const Profile = () => {
             < Footer />
         </div>
     )
-}
-
-export default Profile;
+};

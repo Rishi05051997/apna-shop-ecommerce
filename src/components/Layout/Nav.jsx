@@ -5,7 +5,7 @@ import { useData } from "../../context/data-context";
 import { useState } from "react";
 import { useAuthContext } from "../../context";
 
-const Nav = () => {
+export const Nav = () => {
     const { login, logOutUser } = useAuthContext()
     const { firstName } = login;
     const [searchTxt, setSearchTxt] = useState("");
@@ -138,5 +138,3 @@ const Nav = () => {
         </div>
     );
 };
-
-export default Nav;
