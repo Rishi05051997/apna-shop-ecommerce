@@ -1,4 +1,4 @@
-import Footer from "../Layout/Footer";
+import { Footer } from "../Layout";
 import { useAuthContext, useData } from "../../context/index";
 import { useNavigate } from "react-router-dom";
 import { RotatingSquare } from "react-loader-spinner";
@@ -42,11 +42,11 @@ export const Signup = () => {
                                         id="fName"
                                         type="text"
                                         className="input-field"
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         placeholder=" "
                                         onChange={(e) => userDispatch({ type: "SET-FIRSTNAME", payload: e.target.value })}
                                     />
-                                    <label for="fName" className="input-label text-2">
+                                    <label htmlFor="fName" className="input-label text-2">
                                         First Name
                                     </label>
                                 </div>
@@ -55,11 +55,11 @@ export const Signup = () => {
                                         id="lName"
                                         type="text"
                                         className="input-field"
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         placeholder=" "
                                         onChange={(e) => userDispatch({ type: "SET-LASTNAME", payload: e.target.value })}
                                     />
-                                    <label for="lName" className="input-label text-2">
+                                    <label htmlFor="lName" className="input-label text-2">
                                         Last Name
                                     </label>
                                 </div>
@@ -68,11 +68,11 @@ export const Signup = () => {
                                         id="email"
                                         type="email"
                                         className="input-field"
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         placeholder=" "
                                         onChange={(e) => userDispatch({ type: "SET-EMAIL", payload: e.target.value })}
                                     />
-                                    <label for="email" className="input-label text-2">
+                                    <label htmlFor="email" className="input-label text-2">
                                         Enter Your Email Id Here
                                     </label>
                                 </div>
@@ -81,7 +81,7 @@ export const Signup = () => {
                                         id="password"
                                         type="password"
                                         className="input-field"
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         placeholder=" "
                                         onChange={(e) => userDispatch({ type: "SET-PASSWORD", payload: e.target.value })}
                                     />
@@ -89,7 +89,7 @@ export const Signup = () => {
                                         className="iconify icons text-2"
                                         data-icon="akar-icons:eye-slashed"
                                     ></span>
-                                    <label for="password" className="input-label text-2">
+                                    <label htmlFor="password" className="input-label text-2">
                                         Enter Your Password Here
                                     </label>
                                 </div>

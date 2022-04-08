@@ -2,6 +2,9 @@ import { createContext, useContext, useReducer, useState } from "react";
 import { dataReducer } from "../reducers/dataReducer";
 
 const dataContext = createContext(null);
+
+
+
 const initialState = {
     products: [],
     oneProduct: [],
@@ -26,7 +29,7 @@ const initialState = {
 };
 
 const DataProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(dataReducer, initialState)
+    const [state, dispatch] = useReducer(dataReducer, initialState);
     const [isError, setIsError] = useState(false);
     return (
         <dataContext.Provider value={{ state, dispatch, isError, setIsError }}>

@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer className="footer pad-sm">
             <div className="btn-list">
@@ -62,5 +62,3 @@ const Footer = () => {
         </footer>
     );
 };
-
-export default Footer;

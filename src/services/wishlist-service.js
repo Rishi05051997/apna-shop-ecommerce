@@ -1,15 +1,14 @@
 import axios from "axios";
 import { API_URL } from "./apiUrl";
 
-const encodedToken = localStorage.getItem("token");
 
-export const initializeUserWishlist = async (dispatch) => {
+export const initializeUserWishlist = async (dispatch, token) => {
     try {
         const { data: { wishlistItems } } = await axios({
             method: 'get',
             url: `${API_URL}/user/wishlist`,
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
 
         })
@@ -26,7 +25,8 @@ export const updateWishlist = async (
     item,
     isWishlisted,
     dispatch,
-    setShowLoader
+    setShowLoader,
+    token
 ) => {
     try {
         setShowLoader(true);
@@ -37,7 +37,7 @@ export const updateWishlist = async (
             url: `${API_URL}/user/wishlist`,
             data: JSON.stringify(product),
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (wishlist) {
@@ -58,14 +58,14 @@ export const updateWishlist = async (
     }
 };
 
-export const removeFromWishlist = async (dispatch, product, setShowLoader) => {
+export const removeFromWishlist = async (dispatch, product, setShowLoader, token) => {
     try {
         setShowLoader(true)
         const { data: { wishlist } } = await axios({
             method: 'DELETE',
             url: `/api/user/wishlist/${product._id}`,
             headers: {
-                authorization: encodedToken
+                authorization: token
             }
         })
         if (wishlist) {
