@@ -56,7 +56,7 @@ export const ProductsFilterAside = () => {
                         checked={sortBy === "HIGH_TO_LOW"}
                         onChange={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
                     />
-                    <label class="text-2 bold" for="high">
+                    <label class="text-2 bold" htmlFor="high">
                         Price High To Low
                     </label>
                 </div>
@@ -68,7 +68,7 @@ export const ProductsFilterAside = () => {
                         checked={sortBy === "LOW_TO_HIGH"}
                         onChange={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
                     />
-                    <label class="text-2 bold" for="lowhighLow">
+                    <label class="text-2 bold" htmlFor="lowhighLow">
                         Price Low To High
                     </label>
                 </div>
@@ -84,7 +84,7 @@ export const ProductsFilterAside = () => {
                         checked={cotton}
                         onChange={() => dispatch({ type: "TOGGLE_COTTON" })}
                     />
-                    <label class="text-2 bold" for="shirt">
+                    <label class="text-2 bold" htmlFor="shirt">
                         Cotton Only
                     </label>
                 </div>
@@ -96,7 +96,7 @@ export const ProductsFilterAside = () => {
                         checked={tericot}
                         onChange={() => dispatch({ type: "TOGGLE_NON_COTTON" })}
                     />
-                    <label class="text-2 bold" for="t-shirt">
+                    <label class="text-2 bold" htmlFor="t-shirt">
                         Tericot Only
                     </label>
                 </div>
@@ -111,7 +111,7 @@ export const ProductsFilterAside = () => {
                         checked={inStock}
                         onChange={() => dispatch({ type: "TOGGLE_STOCK" })}
                     />
-                    <label class="text-2 bold" for="inStock">
+                    <label class="text-2 bold" htmlFor="inStock">
                         Exclude out of stock
                     </label>
                 </div>
@@ -122,7 +122,7 @@ export const ProductsFilterAside = () => {
                         checked={fastDelivery}
                         onChange={() => dispatch({ type: "TOGGLE_DELIVERY" })}
                     />
-                    <label class="text-2 bold" for="fastD">
+                    <label class="text-2 bold" htmlFor="fastD">
                         Fast Delivery only
                     </label>
                 </div>
@@ -132,8 +132,8 @@ export const ProductsFilterAside = () => {
             <section className="sort-by mar-xl">
                 <div class="head-3 highlightMainText">Sort By Rating</div>
                 {
-                    ratingArray.map((rate) =>
-                        <div className="radio-btn mar-y-1">
+                    ratingArray.map((rate, i) =>
+                        <div key={i} className="radio-btn mar-y-1">
                             <input
                                 id="5"
                                 type="radio"
@@ -142,13 +142,46 @@ export const ProductsFilterAside = () => {
                                 value={rate}
                                 onChange={(e) => dispatch({ type: "TOGGLE_RATING", payload: e.target.value })}
                             />
-                            <label className="text-2 bold" htmlFor="5">
+                            <label className="text-2 bold" htmlhtmlFor="5">
                                 {rate} <Icon className="iconify" icon="emojione:star"></Icon> and Above
                             </label>
                         </div>
                     )
                 }
             </section>
+            {/* <section class="categories mar-xl">
+                <div class="head-3 highlightMainText">Categories</div>
+                <div class="checkbox-div mar-y-1">
+                    <input type="checkbox" name="type-1" id="type-1" />
+                    <label class="text-2 bold" htmlFor="type-1">
+                        Casual Shirts
+                    </label>
+                </div>
+                <div class="checkbox-div mar-y-1">
+                    <input type="checkbox" name="type-2" id="type-2" />
+                    <label class="text-2 bold" htmlFor="type-2">
+                        Formal Shirts
+                    </label>
+                </div>
+                <div class="checkbox-div mar-y-1">
+                    <input type="checkbox" name="type-3" id="type-3" />
+                    <label class="text-2 bold" htmlFor="type-3">
+                        Half Shirts
+                    </label>
+                </div>
+                <div class="checkbox-div mar-y-1">
+                    <input type="checkbox" name="type-4" id="type-4" />
+                    <label class="text-2 bold" htmlFor="type-4">
+                        Dress Code Shirts
+                    </label>
+                </div>
+                <div class="checkbox-div mar-y-1">
+                    <input type="checkbox" name="type-4" id="type-4" />
+                    <label class="text-2 bold" htmlFor="type-4">
+                        T-Shirts
+                    </label>
+                </div>
+            </section> */}
         </aside>
     )
 }
