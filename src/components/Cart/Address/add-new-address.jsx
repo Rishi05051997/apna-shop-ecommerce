@@ -64,7 +64,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="nameOfPerson"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.name}
                                     onChange={(e) => setAddress((address) => (
@@ -74,7 +74,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="nameOfPerson" class="input-label text-2"
+                                <label htmlFor="nameOfPerson" class="input-label text-2"
                                 >Enter Name</label
                                 >
                             </div>
@@ -84,7 +84,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="houseNo"
                                     type="number"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.houseNo}
                                     onChange={(e) => setAddress((address) => (
@@ -94,7 +94,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="houseNo" class="input-label text-2"
+                                <label htmlFor="houseNo" class="input-label text-2"
                                 >Enter House No.,Street, Colony</label
                                 >
                             </div>
@@ -103,7 +103,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="locality"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.locality}
                                     onChange={(e) => setAddress((address) => (
@@ -113,7 +113,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="locality" class="input-label text-2"
+                                <label htmlFor="locality" class="input-label text-2"
                                 >Enter Locality</label
                                 >
                             </div>
@@ -122,7 +122,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="street"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.street}
                                     onChange={(e) => setAddress((address) => (
@@ -132,7 +132,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="street" class="input-label text-2"
+                                <label htmlFor="street" class="input-label text-2"
                                 >Enter Street</label
                                 >
                             </div>
@@ -141,7 +141,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="city"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.city}
                                     onChange={(e) => setAddress((address) => (
@@ -152,14 +152,14 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     ))}
                                 />
                                 <p className="head-4 highlightMainText">{errorMsg.city}</p>
-                                <label for="city" class="input-label text-2">Enter City</label>
+                                <label htmlFor="city" class="input-label text-2">Enter City</label>
                             </div>
                             <div class="custom-input-one mar-y-2">
                                 <input
                                     id="zip"
                                     type="number"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.zipCode}
                                     onChange={(e) => setAddress((address) => (
@@ -169,7 +169,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="zip" class="input-label text-2">Enter Zip Code</label>
+                                <label htmlFor="zip" class="input-label text-2">Enter Zip Code</label>
                             </div>
                             <p className="head-4 highlightMainText">{errorMsg.zipCode}</p>
                             <div class="custom-input-one mar-y-2">
@@ -177,7 +177,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="mobileNo"
                                     type="number"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.mobileNo}
                                     onChange={(e) => setAddress((address) => (
@@ -187,7 +187,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="mobileNo" class="input-label text-2"
+                                <label htmlFor="mobileNo" class="input-label text-2"
                                 >Enter Mobile No</label
                                 >
                             </div>
@@ -197,7 +197,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="state"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.state}
                                     onChange={(e) => setAddress((address) => (
@@ -207,7 +207,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="state" class="input-label text-2">Enter State</label>
+                                <label htmlFor="state" class="input-label text-2">Enter State</label>
                             </div>
 
                             <div class="custom-input-one mar-y-2">
@@ -215,7 +215,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                     id="country"
                                     type="text"
                                     class="input-field"
-                                    autocomplete="off"
+                                    autoComplete="off"
                                     placeholder=" "
                                     value={address.country}
                                     onChange={(e) => setAddress((address) => (
@@ -225,7 +225,7 @@ const AddNewAddress = ({ isEditable, setIsEditable, IsAdd, setIsAdd, editAddress
                                         }
                                     ))}
                                 />
-                                <label for="country" class="input-label text-2"
+                                <label htmlFor="country" class="input-label text-2"
                                 >Enter Country</label>
                             </div>
                         </div>

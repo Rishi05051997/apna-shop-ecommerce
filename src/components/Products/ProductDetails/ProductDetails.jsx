@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useData } from "../../../context";
 import { AddToCart } from "../../Cart/Add-To-Cart";
-import Footer from "../../Layout/Footer";
+import { Footer } from "../../Layout";
 import { getProductBasedOnId } from "./../../../services/index"
 
-const ProductDetails = () => {
+export const ProductDetails = () => {
     const { id } = useParams();
     const { state: { oneProduct }, dispatch } = useData();
 
@@ -91,10 +91,10 @@ const ProductDetails = () => {
                                 id="location-name"
                                 type="text"
                                 className="input-field"
-                                autocomplete="off"
+                                autoComplete="off"
                                 placeholder=" "
                             />
-                            <label for="location-name" className="input-label text-2">
+                            <label htmlFor="location-name" className="input-label text-2">
                                 Please Enter Your Location
                             </label>
                         </div>
@@ -110,5 +110,3 @@ const ProductDetails = () => {
         </div>
     );
 };
-
-export default ProductDetails;

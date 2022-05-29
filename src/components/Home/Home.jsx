@@ -1,6 +1,6 @@
 import Offers from "./Offers";
 import Banner from "./Banner";
-import Footer from "../Layout/Footer";
+import { Footer } from "../Layout";
 import FeatureCategories from "./FeatureCategories";
 import FeatureBrands from "./FeatureBrands";
 import Testimonials from "./Testimonials";
